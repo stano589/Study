@@ -1,0 +1,1 @@
+Self study of Haskell following the https://www.seas.upenn.edu/~cis1940/spring13/lectures.html lectures and the "Real World Haskell" book.
