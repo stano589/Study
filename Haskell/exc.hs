@@ -1,6 +1,3 @@
-import Text.XHtml (input)
-import GHC.Base (VecElem(Int16ElemRep))
-import System.Win32 (COORD(x))
 -- file: ch01/WC.hs
 -- lines beginning with "--" are comments.
 

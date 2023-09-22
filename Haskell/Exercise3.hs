@@ -1,4 +1,3 @@
-import Distribution.Simple.Utils (xargs)
 reduceList :: Int -> [a] -> [a]
 reduceList n x
     | null x = []

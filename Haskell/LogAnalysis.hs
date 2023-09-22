@@ -1,8 +1,5 @@
 module LogAnalysis where
 import Log
-import System.IO
-import Control.Monad
-import System.Win32 (COORD(x), SMALL_RECT (right), ErrCode)
 
 parseHelper :: [String] -> LogMessage
 parseHelper ("E" : rst) = LogMessage (Error (read (head rst))) (read (head (tail rst))) (unwords (tail (tail rst)))
