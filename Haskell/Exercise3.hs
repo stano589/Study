@@ -18,3 +18,19 @@ localMaxima (a:b:c:xs)
 localMaxima xs
     | length xs < 2 = []
 localMaxima _ = []
+
+frequency :: Int -> [Int] -> Int
+frequency x = length . filter (x==)
+
+counts :: [Int] -> [Int] -> [Int]
+counts vs xs = map (flip frequency xs) vs
+
+generateFreq :: [Int] -> [Int]
+generateFreq = counts [0,1,2,3,4,5,6,7,8,9]
+
+horizontalHisto :: [Int] -> [String]
+horizontalHisto = map (flip replicate '*')
+
+histogram :: [Integer] -> String
+histogram [] = "==========\n0123456789\n"
+histogram (x:xs) = "abc" 
