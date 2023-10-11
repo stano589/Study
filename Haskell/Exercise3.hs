@@ -1,3 +1,4 @@
+import Data.List (transpose)
 reduceList :: Int -> [a] -> [a]
 reduceList n x
     | null x = []
@@ -29,8 +30,24 @@ generateFreq :: [Int] -> [Int]
 generateFreq = counts [0,1,2,3,4,5,6,7,8,9]
 
 horizontalHisto :: [Int] -> [String]
-horizontalHisto = map (flip replicate '*')
+horizontalHisto = map (flip replicate '*') . generateFreq
 
-histogram :: [Integer] -> String
+-- rotate 90 degrees
+rotate :: [[a]] -> [[a]]
+rotate = reverse . transpose
+
+-- fill to rectangle with space padding
+rectangular :: a -> [[a]] -> [[a]]
+rectangular padding rows = rectangle where
+  width = maximum $ map length rows
+  padded = map (++ repeat padding) rows
+  rectangle = map (take width) padded
+
+verticalHisto :: [Int] -> [String]
+verticalHisto = rotate . rectangular ' ' . horizontalHisto
+
+histogram :: [Int] -> String
 histogram [] = "==========\n0123456789\n"
-histogram (x:xs) = "abc" 
+histogram x = unlines( verticalHisto x) ++ histogram []
+
+printHisto = putStr . histogram
